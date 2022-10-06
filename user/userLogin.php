@@ -30,15 +30,17 @@
             $json_array['civil_status'] = $row -> civil_status;
             $json_array['business_address'] = $row -> business_address;
             $json_array['high_school'] = $row -> high_school;
-            /*$json_array['high_school_yg'] = $row -> h;
-            $json_array['senior_high_school'] = $row -> senior_high_school;
-            $json_array['senior_high_school_yg'] = $row -> senior_high_school_yg;
+            $json_array['high_school_yg'] = $row -> high_school_yg;
+            $json_array['senior_highschool'] = $row -> senior_highschool;
+            $json_array['senior_highschool_yg'] = $row -> senior_highschool_yg;
             $json_array['birthday'] = $row -> birthday;
-            $json_array['nickname'] = $row -> $nickname;*/
+            $json_array['nickname'] = $row -> nickname;
+;
             echo json_encode($json_array);
         }
         else {
           $json_array['loginStatus']=false;
+          echo json_encode($json_array);
         
           
         }
