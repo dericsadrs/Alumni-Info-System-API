@@ -8,10 +8,11 @@
         if ($db)
         {
     
-            $insert = "INSERT INTO feed (user_id, content, date_published, status) VALUES ('$id','$contentFeed',UTC_TIMESTAMP,0)";
+            $insert = "INSERT INTO feed (user_id, content, date_published, status) VALUES ('$id','$contentFeed',UTC_DATE,0)";
             $query = mysqli_query($db,$insert);
             if($query) {
-                echo json_encode("Sucessfully posted.");
+                echo json_encode($contentFeed);
+                //echo json_encode("Sucessfully posted.");
             }
             else
             {
