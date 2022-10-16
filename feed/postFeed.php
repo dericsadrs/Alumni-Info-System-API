@@ -16,7 +16,7 @@
             }
             else
             {
-                echo json_encode("Failed to insert data.");
+                echo json_encode(false);
             }
         }
         else {
