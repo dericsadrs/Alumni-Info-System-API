@@ -11,11 +11,11 @@
             $insert = "INSERT INTO question (user_id, content, date_published) VALUES ('$user_id','$question',UTC_DATE)";
             $query = mysqli_query($db,$insert);
             if($query) {
-                echo json_encode("Sucessfully posted.");
+                echo json_encode(true);
             }
             else
             {
-                echo json_encode("Failed to insert data.");
+                echo json_encode(false);
             }
         }
         else {
