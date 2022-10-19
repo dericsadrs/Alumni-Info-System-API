@@ -9,7 +9,7 @@
           else if( $connect) 
           {
 
-           $sql = "SELECT users.email_address, users.name, jobs.content, jobs.date_published FROM `jobs` INNER JOIN users ON jobs.user_id = users.id";
+           $sql = "SELECT users.email, users.name, jobs.title, jobs.content, jobs.address, jobs.created_at FROM jobs INNER JOIN users ON users.id = jobs.user_id;";
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  

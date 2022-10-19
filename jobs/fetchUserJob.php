@@ -11,7 +11,7 @@
           {
 
           
-           $sql = "SELECT id, content, date_published FROM `jobs`WHERE user_id = '$user_id'"; 
+           $sql = "SELECT  jobs.id, jobs.title, jobs.content, jobs.address, jobs.created_at FROM jobs INNER JOIN users ON users.id = jobs.user_id WHERE users.id = '$user_id'"; 
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  
