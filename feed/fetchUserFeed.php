@@ -11,7 +11,8 @@
           {
 
           
-           $sql = "SELECT id, content, date_published FROM `feed`WHERE user_id = '$user_id'"; 
+          $sql = "SELECT feeds.id, feeds.title, feeds.content, feeds.created_at FROM feeds WHERE user_id = '$user_id'";
+     
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  

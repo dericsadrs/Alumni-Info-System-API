@@ -11,7 +11,7 @@
           {
 
           
-           $sql = "DELETE FROM feed WHERE id = '$user_id'"; 
+           $sql = "DELETE FROM feeds WHERE id = '$user_id'"; 
            $result = mysqli_query($connect, $sql); 
            
            if($result) {

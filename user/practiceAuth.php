@@ -2,19 +2,19 @@
 
          $db =  mysqli_connect('localhost','root','','alumni_db');
 
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $email = "gebs@gmail.com";
+        $password = "password";
         
         if($db) 
         {
               
-                $verifyEmail = "SELECT email FROM users WHERE email = '$email'";
+                $verifyEmail = "SELECT email FROM users WHERE email = '".$email."'";
                 $emailQuery = mysqli_query($db,$verifyEmail);
                 $count = mysqli_num_rows($emailQuery);
              
                 if($count == 1 ) {
                
-                    $verifyPasword = "SELECT password FROM users WHERE email ='$email'";
+                    $verifyPasword = "SELECT password FROM users WHERE email ='".$email."'";
                     $passwordQuery = mysqli_query($db,$verifyPasword);
                     $rowPassword = mysqli_fetch_object($passwordQuery);
                     
@@ -22,8 +22,7 @@
 
                     if(password_verify($password, $json_pass['password'])) {
                      
-                      
-                        $fetchUser = "SELECT users.id, alumnis.title, alumnis.full_name, alumnis.email_address, university_admins.university, courses.course, alumnis.gender,alumnis.address, alumnis.contact_number, alumnis.civil_status,alumnis.birthday,alumnis.job_business,alumnis.business_address,alumnis.high_school,alumnis.high_school_yg,alumnis.senior_highschool,alumnis.senior_highschool_yg,alumnis.college_batch,alumnis.nickname, alumnis.image_path FROM alumnis INNER JOIN users ON users.id = alumnis.user_id INNER JOIN courses ON alumnis.courses_id = courses.id INNER JOIN university_admins ON alumnis.university = university_admins.id WHERE email = '$email'";
+                        $fetchUser = "SELECT * FROM alumnis INNER JOIN users ON users.id = alumnis.user_id WHERE users.email = '".$email."'";
                         $queryFetch = mysqli_query($db,$fetchUser);
                      
                         $countUser = mysqli_num_rows($queryFetch);
@@ -39,7 +38,7 @@
                         $json_array['title'] = $row -> title;
                         $json_array['university'] = $row -> university;
                         $json_array['full_name'] = $row -> full_name;
-                        $json_array['course'] = $row -> course;
+                        $json_array['course_name'] = "tambay";
                         $json_array['college_batch'] = $row -> college_batch;
                         $json_array['email_address'] = $row -> email_address;
                         $json_array['address'] = $row -> address;
@@ -60,17 +59,17 @@
                     }
                     else
                     {
-                        echo json_encode("wromg password");
+                        echo "wromg password";
                     }
                 }
                 else{
-                    echo json_encode("wrong credentials");
+                    echo "email not found";
                 }
             }
      
         else
         {
-            echo json_encode("DB ERROR");
+            echo "DB ERROR";
             
         }
 

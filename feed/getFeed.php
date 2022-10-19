@@ -11,7 +11,7 @@
           {
 
           
-           $sql = "SELECT users.name, content, feed.date_published, feed.status FROM feed INNER JOIN users ON feed.user_id = users.id"; 
+           $sql = "SELECT users.name,feeds.title, feeds.content, feeds.created_at FROM feeds INNER JOIN users ON feeds.user_id = users.id WHERE status = 1"; 
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  
