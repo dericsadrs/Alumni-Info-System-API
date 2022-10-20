@@ -1,7 +1,7 @@
 <?php   
            $connect = mysqli_connect("localhost", "root", "", "alumni_db");  
 
-           $question_id = $_POST['question_id'];
+           $user_id = $_POST['user_id'];
            if(!$connect) 
            {
                 echo "Error Connecting to the Database!";
@@ -10,7 +10,7 @@
           else if( $connect) 
           {
 
-           $sql = "SELECT  replies.forum_id, replies.id,  users.name, replies.content, replies.created_at FROM `replies` INNER JOIN users ON users.id = replies.user_id WHERE replies.forum_id = $question_id"; 
+           $sql = "SELECT forums.user_id, forums.id, forums.content, forums.created_at FROM forums WHERE forums.user_id = '$user_id'";
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  

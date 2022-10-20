@@ -1,6 +1,6 @@
 <?php   
            $connect = mysqli_connect("localhost", "root", "", "alumni_db");  
-           $sql = "SELECT * FROM `perks`";
+           $sql = "SELECT * FROM perks";
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  

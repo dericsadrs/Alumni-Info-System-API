@@ -10,7 +10,7 @@
         if ($db)
         {
     
-            $insert = "INSERT INTO feeds ( user_id, title, content, created_at, updated_at, status) VALUES ('$id','$feedtitle','$contentFeed',UTC_DATE,UTC_DATE,0)";
+            $insert = "INSERT INTO feeds ( user_id, title, content, created_at, updated_at, status) VALUES ('$id','$feedtitle','$contentFeed',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,0)";
             $query = mysqli_query($db,$insert);
             if($query) {
                 echo json_encode(true);

@@ -10,8 +10,7 @@
 
            else if ($connect)
            {
-          $sql = "SELECT alumni.title, alumni.full_name, university_admin.university, courses.course_name, alumni.college_batch, alumni.email_address, alumni.address,alumni.gender,alumni.job_business, alumni.contact_number, alumni.civil_status, alumni.business_address, alumni.high_school, alumni.high_school_yg, alumni.senior_highschool, alumni.senior_highschool_yg, alumni.birthday, alumni.nickname, alumni.image_path FROM alumni INNER JOIN university_admin ON alumni.university = university_admin.id INNER JOIN courses ON alumni.courses_id = courses.id WHERE alumni.full_name LIKE '%$name%'";
-        //$sql = "SELECT alumni.title, alumni.full_name, university_admin.university, courses.course_name, alumni.college_batch, alumni.email_address, alumni.address,alumni.gender,alumni.job_business, alumni.contact_number, alumni.civil_status, alumni.business_address, alumni.high_school, alumni.high_school_yg, alumni.senior_highschool, alumni.senior_highschool_yg, alumni.birthday, alumni.nickname FROM alumni INNER JOIN university_admin ON alumni.university = university_admin.id INNER JOIN courses ON alumni.courses_id = courses.id WHERE alumni.full_name LIKE = '%$name%'";
+           $sql = "SELECT alumnis.title, alumnis.full_name, alumnis.email_address, university_admins.university, courses.course, alumnis.gender,alumnis.address, alumnis.contact_number, alumnis.civil_status,alumnis.birthday,alumnis.job_business,alumnis.business_address,alumnis.high_school,alumnis.high_school_yg,alumnis.senior_highschool,alumnis.senior_highschool_yg,alumnis.college_batch,alumnis.nickname, alumnis.image_path FROM alumnis INNER JOIN users ON users.id = alumnis.user_id INNER JOIN courses ON alumnis.courses_id = courses.id INNER JOIN university_admins ON alumnis.university = university_admins.id; WHERE name LIKE %'$name'%";
            $result = mysqli_query($connect, $sql);  
 
 

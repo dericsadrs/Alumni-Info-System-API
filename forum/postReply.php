@@ -9,7 +9,7 @@
         if ($db)
         {
     
-            $insert = "INSERT INTO replies (user_id, question_id, reply, date_published) VALUES ('$user_id', '$question_id','$replyContent',UTC_DATE)";
+            $insert = "INSERT INTO replies (user_id, forum_id, content, created_at) VALUES ('$user_id', '$question_id','$replyContent',UTC_DATE)";
             $query = mysqli_query($db,$insert);
             if($query) {
                 echo json_encode(true);

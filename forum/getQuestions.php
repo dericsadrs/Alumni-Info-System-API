@@ -11,7 +11,7 @@
           {
 
           
-           $sql = "SELECT question.id, question.user_id, name, content,date_published FROM question INNER JOIN users ON question.user_id = users.id;";
+           $sql = "SELECT users.name, forums.id, forums.content, forums.created_at FROM forums INNER JOIN users ON users.id = forums.user_id";
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  

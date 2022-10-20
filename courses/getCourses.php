@@ -11,7 +11,7 @@
           {
 
           
-           $sql = "SELECT course_name, course_description FROM courses"; 
+           $sql = "SELECT course, course_description FROM courses"; 
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  

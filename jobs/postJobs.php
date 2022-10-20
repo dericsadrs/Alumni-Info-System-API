@@ -11,7 +11,7 @@
         if ($db)
         {
     
-            $insert = "INSERT INTO jobs(user_id, title, content, address,created_at,updated_at) VALUES ('$id','$titleJob','$contentJob','$jobAddress',UTC_TIMESTAMP,UTC_TIMESTAMP)";
+            $insert = "INSERT INTO jobs(user_id, title, content, address,created_at,updated_at) VALUES ('$id','$titleJob','$contentJob','$jobAddress',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
             $query = mysqli_query($db,$insert);
             if($query) {
                 echo json_encode(true);
