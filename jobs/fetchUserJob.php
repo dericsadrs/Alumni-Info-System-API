@@ -1,18 +1,18 @@
 <?php   
-           $connect = mysqli_connect("localhost", "root", "", "alumni_db");  
+           $establishConnection = mysqli_connect("localhost", "root", "", "alumni_db");  
 
            $user_id = $_POST['user_id'];
-           if(!$connect) 
+           if(!$establishConnection) 
            {
                 echo "Error Connecting to the Database!";
            }
 
-          else if( $connect) 
+          else if($establishConnection) 
           {
 
           
            $sql = "SELECT  jobs.id, jobs.title, jobs.content, jobs.address, jobs.created_at FROM jobs INNER JOIN users ON users.id = jobs.user_id WHERE users.id = '$user_id'"; 
-           $result = mysqli_query($connect, $sql);  
+           $result = mysqli_query($establishConnection, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  
            {  
@@ -21,6 +21,6 @@
           
            echo json_encode($json_array);  
 
-           $connect -> close();
+           $establishConnection -> close();
           }
            ?> 

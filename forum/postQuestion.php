@@ -8,7 +8,7 @@
         if ($db)
         {
     
-            $insert = "INSERT INTO forums (user_id, content, created_at) VALUES ('$user_id','$question',CURRENT_TIMESTAMP)";
+            $insert = "INSERT INTO forums (user_id, content, created_at,updated_at) VALUES ('$user_id','$question',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP)";
             $query = mysqli_query($db,$insert);
             if($query) {
                 echo json_encode(true);

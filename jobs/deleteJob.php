@@ -1,16 +1,16 @@
 <?php   
-           $connect = mysqli_connect("localhost", "root", "", "alumni_db");  
+           $establishConnection = mysqli_connect("localhost", "root", "", "alumni_db");  
 
            $user_id = $_POST['user_id'];
-           if(!$connect) 
+           if(!$establishConnection) 
            {
-                echo "Error Connecting to the Database!";
+                echo json_encode("db_error");
            }
 
-          else if( $connect) 
+          else if( $establishConnection) 
           {
            $sql = "DELETE FROM jobs WHERE id = '$user_id'"; 
-           $result = mysqli_query($connect, $sql); 
+           $result = mysqli_query($establishConnection, $sql); 
            
            if($result) {
             echo json_encode(true);
@@ -19,9 +19,7 @@
              else{
                 echo json_encode(false);
              }
-           
-
-           $connect -> close();
+           $establishConnection -> close();
           }
         
            ?> 

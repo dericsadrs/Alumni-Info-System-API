@@ -9,8 +9,7 @@
 
           else if( $connect) 
           {
-
-           $sql = "SELECT users.name, forums.id, forums.content, forums.created_at FROM forums INNER JOIN users ON users.id = forums.user_id WHERE forums.user_id = '$user_id'";
+          $sql = "SELECT forums.content AS forum_content,replies.id, replies.content,replies.created_at FROM replies INNER JOIN forums ON forums.id = replies.forum_id WHERE replies.user_id = '$user_id'";
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  

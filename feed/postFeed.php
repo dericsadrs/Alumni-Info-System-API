@@ -14,7 +14,7 @@
             $query = mysqli_query($db,$insert);
             if($query) {
                 echo json_encode(true);
-                //echo json_encode("Sucessfully posted.");
+           
             }
             else
             {

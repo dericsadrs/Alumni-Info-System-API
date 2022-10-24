@@ -1,21 +1,22 @@
 <?php
 
-         $db =  mysqli_connect('localhost','root','','alumni_db');
+         $establishConnection =  mysqli_connect('localhost','root','','alumni_db');
 
         $email = $_POST['email'];
         $password = $_POST['password'];
+
         
-        if($db) 
+        if($establishConnection) 
         {
               
                 $verifyEmail = "SELECT email FROM users WHERE email = '$email'";
-                $emailQuery = mysqli_query($db,$verifyEmail);
+                $emailQuery = mysqli_query($establishConnection,$verifyEmail);
                 $count = mysqli_num_rows($emailQuery);
              
                 if($count == 1 ) {
                
                     $verifyPasword = "SELECT password FROM users WHERE email ='$email'";
-                    $passwordQuery = mysqli_query($db,$verifyPasword);
+                    $passwordQuery = mysqli_query($establishConnection,$verifyPasword);
                     $rowPassword = mysqli_fetch_object($passwordQuery);
                     
                     $json_pass['password'] = $rowPassword -> password;
@@ -23,8 +24,8 @@
                     if(password_verify($password, $json_pass['password'])) {
                      
                       
-                        $fetchUser = "SELECT users.id, alumnis.title, alumnis.full_name, alumnis.email_address, university_admins.university, courses.course, alumnis.gender,alumnis.address, alumnis.contact_number, alumnis.civil_status,alumnis.birthday,alumnis.job_business,alumnis.business_address,alumnis.high_school,alumnis.high_school_yg,alumnis.senior_highschool,alumnis.senior_highschool_yg,alumnis.college_batch,alumnis.nickname, alumnis.image_path FROM alumnis INNER JOIN users ON users.id = alumnis.user_id INNER JOIN courses ON alumnis.courses_id = courses.id INNER JOIN university_admins ON alumnis.university = university_admins.id WHERE email = '$email'";
-                        $queryFetch = mysqli_query($db,$fetchUser);
+                        $fetchUser = "SELECT users.id, alumnis.title, alumnis.full_name, alumnis.email_address, university_admins.university, courses.course, alumnis.gender,alumnis.address, alumnis.contact_number, alumnis.civil_status,alumnis.birthday,alumnis.job_business,alumnis.business_address,alumnis.high_school,alumnis.high_school_yg,alumnis.senior_highschool,alumnis.senior_highschool_yg,alumnis.college_batch,alumnis.nickname, alumnis.image_path FROM alumnis INNER JOIN users ON users.id = alumnis.user_id INNER JOIN courses ON alumnis.courses_id = courses.id INNER JOIN university_admins ON alumnis.university = university_admins.id WHERE email = '$email' AND status = 1";
+                        $queryFetch = mysqli_query($establishConnection,$fetchUser);
                      
                         $countUser = mysqli_num_rows($queryFetch);
 
@@ -57,22 +58,39 @@
                         $json_array['image_path'] = $row -> image_path;  
                         echo json_encode($json_array);
                         }
+                        else
+                    {
+                        $json_array['loginStatus'] = false;
+                        $json_array['message'] = "pending";
+                        echo json_encode($json_array);
+                    }
+                        
                     }
                     else
                     {
-                        echo json_encode("wromg password");
+                        $json_array['loginStatus'] = false;
+                        $json_array['message'] = "!pw";
+                        echo json_encode($json_array);
                     }
                 }
                 else{
-                    echo json_encode("wrong credentials");
+                    $json_array['loginStatus'] = false;
+                    $json_array['message'] = "!user";
+                    echo json_encode($json_array);
                 }
             }
+
+            else if (!$establishConnection){
+             $json_array['loginStatus'] = false;
+            $json_array['message'] = "error_db";
+            echo json_encode($json_array);
+            }
+            else{
+                $json_array['loginStatus'] = false;
+                $json_array['message'] = "fatal_error";
+                echo json_encode($json_array);
+            }
      
-        else
-        {
-            echo json_encode("DB ERROR");
-            
-        }
 
             
  ?>
