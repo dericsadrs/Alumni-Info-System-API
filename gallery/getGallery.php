@@ -10,7 +10,7 @@
           else if( $connect) 
           {
 
-           $sql = "SELECT * FROM gallery";
+           $sql = "SELECT * FROM galleries WHERE status = 1";
            $result = mysqli_query($connect, $sql);  
            $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  
