@@ -1,6 +1,6 @@
 <?php  
 
-        $establishConnection = mysqli_connect('localhost','root','','alumni_db');
+        $establishConnection = mysqli_connect("localhost", "u693530993_alumni_db1","Alumniinformationsystem2022","u693530993_alumni_db1");
 
         $id = $_POST['id'];
         $titleJob = $_POST['jobTitle'];

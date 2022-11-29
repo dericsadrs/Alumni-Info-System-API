@@ -10,9 +10,9 @@
           else if( $connect) 
           {
 
-           $sql = "SELECT users.name, galleries.image, galleries.description, galleries.created_at FROM galleries INNER JOIN users ON users.id = galleries.user_id  WHERE galleries.status = 1";
-           $result = mysqli_query($connect, $sql);  
-           $json_array = array();  
+         $sql =  "SELECT galleries.id, galleries.image, galleries.description, galleries.created_at FROM galleries INNER JOIN users ON users.id = galleries.user_id  WHERE galleries.status = 1";
+        $result = mysqli_query($connect, $sql);  
+        $json_array = array();  
            while($row = mysqli_fetch_assoc($result))  
            {  
                 $json_array[] = $row;
