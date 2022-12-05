@@ -1,9 +1,8 @@
 <?php   
              // mysqli_connect("localhost", username, password, database)
-             $connect = mysqli_connect("localhost", "u693530993_alumni_db1","Alumniinformationsystem2022","u693530993_alumni_db1");
+          $connect = mysqli_connect("localhost", "u693530993_alumni_db1","Alumniinformationsystem2022","u693530993_alumni_db1");
 
-           $feed_id = $_POST['feed_id'];
-           $title = $_POST['title'];
+           $job_id = $_POST['forum_id'];
            $update = $_POST['update'];
            if(!$connect) 
            {
@@ -13,7 +12,7 @@
           else if( $connect) 
           {
           
-           $sql = "UPDATE feeds SET feeds.content = '$update', feeds.title = '$title' WHERE feeds.id = '$feed_id'";
+           $sql = "UPDATE forums SET forums.content = '$update' WHERE forums.id = '$job_id'";
            $result = mysqli_query($connect, $sql); 
            
            if($result) {

@@ -17,7 +17,6 @@
            
            if($result) {
             echo json_encode(true);
-            //echo json_encode("Sucessfully posted.");
              }
              else{
                 echo json_encode(false);
